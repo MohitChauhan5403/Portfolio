@@ -350,13 +350,16 @@ header{
 .project-grid {
   /* display: grid; */
   display: flex;
-  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: center;
   /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
   gap: 25px;
 }
 
 .project-card {
   background: #fff;
+  flex: 1 1 250px;          /* minimum width of 250px, grow as needed */
+  max-width: 300px;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -388,3 +391,30 @@ header{
   color: #555;
   line-height: 1.5;
 }
+
+
+@media(max-width: 700px) {
+  #menu {
+    display: none; /* hide menu initially */
+    flex-direction: column;
+    position: absolute;
+    top: 10vh;   /* below navbar */
+    left: 0;
+    width: 100%;
+    background: #ecebea;
+    padding: 20px 0;
+    text-align: center;
+    z-index: 1000;
+  }
+
+  #menu.show {
+    display: flex; /* show menu when toggled */
+  }
+
+  #droplist-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+}
+
